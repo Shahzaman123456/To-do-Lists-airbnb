@@ -111,6 +111,8 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("error.ejs", { err });
 });
 
+export default app;
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
