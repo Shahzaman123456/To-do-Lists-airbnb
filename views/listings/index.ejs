@@ -1,0 +1,68 @@
+<% layout("/layouts/boilerplate") %>
+
+<!-- Filters -->
+<div id="filters" class="d-flex flex-wrap flex-md-nowrap overflow-auto py-2 px-2 mb-4 border rounded">
+  <a href="/listings?category=trending<%= q ? `&q=${encodeURIComponent(q)}` : '' %>" class="filter me-2 mb-2 <%= category === 'trending' ? 'active' : '' %>">
+    <div class="text-center"><i class="fa-solid fa-fire fa-lg"></i><p class="mb-0">Trending</p></div>
+  </a>
+  <a href="/listings?category=rooms<%= q ? `&q=${encodeURIComponent(q)}` : '' %>" class="filter me-2 mb-2 <%= category === 'rooms' ? 'active' : '' %>">
+    <div class="text-center"><i class="fa-solid fa-bed fa-lg"></i><p class="mb-0">Rooms</p></div>
+  </a>
+  <a href="/listings?category=iconic%20cities<%= q ? `&q=${encodeURIComponent(q)}` : '' %>" class="filter me-2 mb-2 <%= category === 'iconic cities' ? 'active' : '' %>">
+    <div class="text-center"><i class="fa-solid fa-city fa-lg"></i><p class="mb-0">Iconic Cities</p></div>
+  </a>
+  <a href="/listings?category=mountains<%= q ? `&q=${encodeURIComponent(q)}` : '' %>" class="filter me-2 mb-2 <%= category === 'mountains' ? 'active' : '' %>">
+    <div class="text-center"><i class="fa-solid fa-train-tram fa-lg"></i><p class="mb-0">Mountains</p></div>
+  </a>
+  <a href="/listings?category=castles<%= q ? `&q=${encodeURIComponent(q)}` : '' %>" class="filter me-2 mb-2 <%= category === 'castles' ? 'active' : '' %>">
+    <div class="text-center"><i class="fa-brands fa-fort-awesome fa-lg"></i><p class="mb-0">Castles</p></div>
+  </a>
+  <a href="/listings?category=pools<%= q ? `&q=${encodeURIComponent(q)}` : '' %>" class="filter me-2 mb-2 <%= category === 'pools' ? 'active' : '' %>">
+    <div class="text-center"><i class="fa-solid fa-person-swimming fa-lg"></i><p class="mb-0">Pools</p></div>
+  </a>
+  <a href="/listings?category=camping<%= q ? `&q=${encodeURIComponent(q)}` : '' %>" class="filter me-2 mb-2 <%= category === 'camping' ? 'active' : '' %>">
+    <div class="text-center"><i class="fa-solid fa-tent fa-lg"></i><p class="mb-0">Camping</p></div>
+  </a>
+  <a href="/listings?category=farms<%= q ? `&q=${encodeURIComponent(q)}` : '' %>" class="filter me-2 mb-2 <%= category === 'farms' ? 'active' : '' %>">
+    <div class="text-center"><i class="fa-solid fa-cow fa-lg"></i><p class="mb-0">Farms</p></div>
+  </a>
+  <a href="/listings?category=arctic<%= q ? `&q=${encodeURIComponent(q)}` : '' %>" class="filter me-2 mb-2 <%= category === 'arctic' ? 'active' : '' %>">
+    <div class="text-center"><i class="fa-solid fa-igloo fa-lg"></i><p class="mb-0">Domes</p></div>
+  </a>
+
+  <!-- Tax toggle -->
+  <div class="ms-auto d-flex align-items-center tax-toggle">
+    <div class="form-check form-switch form-check-reverse">
+      <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+      <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
+    </div>
+  </div>
+</div>
+
+<!-- Listings -->
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-3">
+  <% for (let listing of allListings) { %>
+    <a href="/listings/<%= listing._id %>" class="listing-link text-decoration-none text-dark col">
+      <div class="card h-100 listing-card">
+        <img src="<%= listing.image.url %>" class="card-img-top" style="height: 20rem; object-fit: cover;" alt="listing_image">
+        <div class="card-body">
+          <p class="card-text mb-0">
+            <b><%= listing.title %></b><br>
+            <%= new Intl.NumberFormat('en-PK', { style: 'currency', currency: 'PKR' }).format(listing.price) %>/night
+            <i class="tax-info">&nbsp;&nbsp;+18% GST</i>
+          </p>
+        </div>
+      </div>
+    </a>
+  <% } %>
+</div>
+
+<script>
+  const taxSwitch = document.getElementById("switchCheckDefault");
+  taxSwitch.addEventListener("change", () => {
+    const taxInfo = document.getElementsByClassName("tax-info");
+    for (let info of taxInfo) {
+      info.style.display = (info.style.display !== "inline") ? "inline" : "none";
+    }
+  });
+</script>

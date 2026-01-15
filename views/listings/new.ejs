@@ -1,0 +1,75 @@
+
+<% layout("/layouts/boilerplate") %>
+    <div class="row mt-3">
+        <div class="col-8 offset-2">
+    <h3>Create New List </h3>
+    <form action="/listings" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="listing[title]" required class="form-control">
+        <div class="valid-feedback">Title looks good!</div>
+        <div class="invalid-feedback">Please enter title</div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Description</label>
+        <textarea name="listing[description]" required class="form-control"></textarea>
+        <div class="invalid-feedback">
+      Please short enter description
+    </div>
+    </div>
+
+<div class="mb-3">
+  <label class="form-label">Category</label>
+  <select name="listing[category]" class="form-select" required>
+    <option value="">Select category</option>
+    <option value="trending">Trending</option>
+    <option value="rooms">Rooms</option>
+    <option value="iconic cities">Iconic Cities</option>
+    <option value="mountains">Mountains</option>
+    <option value="castles">Castles</option>
+    <option value="pools">Amazing Pools</option>
+    <option value="camping">Camping</option>
+    <option value="farms">Farms</option>
+    <option value="arctic">Domes</option>
+  </select>
+  <div class="invalid-feedback">Please select a category</div>
+</div>
+     <div class="mb-3">
+        <label class="form-label"> Upload Image</label>
+        <input type="file" name="listing[image]" required class="form-control">
+        <div class="invalid-feedback">
+      Please upload correct format image
+    </div>
+    </div>
+
+
+    <div class="row">
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Price</label>
+            <input type="text" name="listing[price]" required class="form-control">
+            <div class="invalid-feedback">Please enter valid price</div>
+        </div>
+
+        <div class="mb-3 col-md-8">
+            <label class="form-label">Country</label>
+            <input type="text" name="listing[country]" required class="form-control">
+            <div class="invalid-feedback">
+      Please enter a valid state.
+    </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Location</label>
+        <input type="text" name="listing[location]" required class="form-control">
+          <div class="invalid-feedback">Location should be valid</div>
+    </div>
+
+    <button type="submit" class="mt-3 mb-5 btn-dark add-btn rounded">Add</button>
+</form>
+
+    </div>
+</div>
+
