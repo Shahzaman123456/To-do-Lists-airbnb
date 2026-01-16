@@ -1,7 +1,7 @@
 <% layout("/layouts/boilerplate") %>
 
 <!-- Filters -->
-<div id="filters" class="d-flex flex-wrap flex-md-nowrap overflow-auto py-2 px-2 mb-4 border rounded">
+<div id="filters" class="d-flex flex-wrap flex-md-nowrap overflow-auto py-1 px-1 mb-4 mt-2 border rounded">
   <a href="/listings?category=trending<%= q ? `&q=${encodeURIComponent(q)}` : '' %>" class="filter me-2 mb-2 <%= category === 'trending' ? 'active' : '' %>">
     <div class="text-center"><i class="fa-solid fa-fire fa-lg"></i><p class="mb-0">Trending</p></div>
   </a>
@@ -40,7 +40,7 @@
 </div>
 
 <!-- Listings -->
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-3">
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
   <% for (let listing of allListings) { %>
     <a href="/listings/<%= listing._id %>" class="listing-link text-decoration-none text-dark col">
       <div class="card h-100 listing-card">
