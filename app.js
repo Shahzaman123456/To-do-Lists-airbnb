@@ -21,7 +21,6 @@ const app = express();
 
 
 const DataBaseurl = process.env.DATABASE_URL
-console.log(DataBaseurl)
 
 
 const __filename = fileURLToPath(import.meta.url);
