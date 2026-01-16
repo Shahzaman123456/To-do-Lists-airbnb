@@ -53,7 +53,7 @@ app.use((req, res, next) => {
 
 const store = MongoStore.create({ 
     mongoUrl: DataBaseurl,
-    crypto:{secret:process.envSECRET},
+    crypto:{secret:process.env.SECRET || 'fallbackSecretDoNotUseThisInProduction'},
     touchAfter:24*3600,
  });
 
@@ -64,7 +64,7 @@ store.on("error", ()=>{
 //session
 const sessionOption={
     store,
-    secret:process.env.SECRET,
+    secret:process.env.SECRET || 'fallbackSecretDoNotUseThisInProduction',
     resave:false,
     saveUninitialized:true,
     cookie:{
