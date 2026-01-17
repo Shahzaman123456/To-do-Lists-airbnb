@@ -32,11 +32,14 @@
 const navbar = document.querySelector('.navbar');
 const navbarCollapse = document.getElementById('navbarNavAltMarkup');
 
-navbarCollapse.addEventListener('show.bs.collapse', () => {
-  navbar.classList.add('navbar-open');
-});
+// Only run if the elements exist
+if (navbar && navbarCollapse) {
+    navbarCollapse.addEventListener('show.bs.collapse', () => {
+      navbar.classList.add('navbar-open');
+    });
 
-navbarCollapse.addEventListener('hide.bs.collapse', () => {
-  navbar.classList.remove('navbar-open');
-});
+    navbarCollapse.addEventListener('hide.bs.collapse', () => {
+      navbar.classList.remove('navbar-open');
+    });
+}
 </script>

@@ -42,7 +42,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(methodOverride("_method"));
 app.engine('ejs',ejsMate)
-app.use(express.static(path.join(__dirname,"/public")))
+app.use(express.static(path.join(__dirname, "public")));
 
 
 app.use((req, res, next) => {
